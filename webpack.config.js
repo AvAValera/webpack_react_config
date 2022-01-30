@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -39,7 +40,13 @@ module.exports = {
         hot: true,
         port: 3000,
         host: "localhost",
-        static: "./src",
+        static: { directory: path.join(__dirname, "public") },
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            },
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -61,6 +68,9 @@ module.exports = {
             ],
         }),
         new FaviconsWebpackPlugin("./public/webpack.png"),
+        new ESLintPlugin({
+            extensions: ["jsx"],
+        }),
     ],
     module: {
         rules: [
