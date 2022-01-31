@@ -40,7 +40,7 @@ module.exports = {
         hot: true,
         port: 3000,
         host: "localhost",
-        static: { directory: path.join(__dirname, "public") },
+        static: { directory: path.join(__dirname, "src") },
         client: {
             overlay: {
                 errors: true,
