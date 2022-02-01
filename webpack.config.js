@@ -37,6 +37,7 @@ module.exports = {
     mode: "development",
     optimization: optimization(),
     devServer: {
+		historyApiFallback: true,
         hot: true,
         port: 3000,
         host: "localhost",
