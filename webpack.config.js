@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
@@ -70,7 +69,6 @@ module.exports = {
                 },
             ],
         }),
-        new FaviconsWebpackPlugin("./public/webpack.png"),
         new ESLintPlugin({
             extensions: ["jsx"],
         }),
@@ -99,20 +97,12 @@ module.exports = {
                 use: ["file-loader"],
             },
             {
-                test: /\.m?js$/,
+                test: /\.(m?js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env"],
-                    },
-                },
-                test: /\.jsx$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-react"],
+                        presets: ["@babel/preset-env","@babel/preset-react"],
                     },
                 },
                 resolve: {
