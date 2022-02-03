@@ -27,7 +27,7 @@ const optimization = () => {
 
 module.exports = {
     entry: {
-        main: ["@babel/polyfill", "./src/index.jsx"],
+        main: ["@babel/polyfill", "./src/index.js"],
     },
     output: {
         path: path.resolve(__dirname, "build"),
@@ -73,6 +73,9 @@ module.exports = {
             extensions: ["jsx"],
         }),
     ],
+    resolve: {
+        extensions: [".js", ".ts", ".jsx", ".tsx"],
+    },
     module: {
         rules: [
             {
@@ -105,10 +108,14 @@ module.exports = {
                         presets: ["@babel/preset-env","@babel/preset-react"],
                     },
                 },
-                resolve: {
-                    extensions: ["js", ".jsx"],
-                },
             },
+            {
+                test: /\.tsx?$/,
+                use:{
+                    loader: "ts-loader"
+                }
+            }
+            
         ],
     },
 };
