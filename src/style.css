@@ -2,7 +2,22 @@
 
 .app{
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
 h1{
     text-align: center;
+}
+.logo{
+    animation: logo 5s linear infinite;
+}
+@keyframes logo {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
