@@ -64,8 +64,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, "public/img"),
-                    to: path.resolve(__dirname, "build/img"),
+                    from: path.resolve(__dirname, "public/"),
+                    to: path.resolve(__dirname, "build/public"),
                 },
             ],
         }),
